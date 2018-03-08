@@ -1,0 +1,64 @@
+mysql -uroot -p
+
+drop table tb_movies;//删除表
+
+show databases;   //查看所有数据库
+show tables; //查看所有表
+desc tb_movies;查看表结构
+create database lovewatch character set utf8 collate utf8_general_ci; //创建lovewhatch数据库
+use lovewatch;
+create table tb_movies(
+    m_id INT UNSIGNED AUTO_INCREMENT primary key,
+    m_name varchar(50) not null,
+    m_othername varchar(512),
+    m_cover varchar(100),
+    m_actor varchar(1024),
+    m_director varchar(200),
+    m_classify varchar(40),
+    m_area varchar(20),
+    m_language varchar(20),
+    m_releasetime varchar(30),
+    m_duration varchar(20),
+    m_score varchar(10),
+    m_shortcomment varchar(1024),
+    m_synopsis varchar(2048),
+    m_linkInfo varchar(3072) not null,
+    m_info varchar(1024),
+    m_userid varchar(10),
+    m_plays int(10),
+    m_like int(10)
+)character set utf8 collate utf8_general_ci;
+
+	truncate table tb_movies; //删除表中的所有数据没有记录（相当于新表）
+	alter table tb_movies modify m_link varchar(1024) not null;	//修改表的某一条属性
+	alter table tb_movies change m_link m_linkinfo varchar(1024) not null; //修改表的m_link字段
+ 	alter table tb_movies drop column m_info;   //删除字段m_info
+
+ 	update tb_users set u_name = '杨家富' where u_id = 1;
+
+	# insert into tb_movies(m_id,m_name,m_othername,m_link)values(1,'神偷奶爸','卑鄙的我','http://dl145.80s.im:920/1710/神tn爸/神tn爸_bd.mp4');
+
+	select * from tb_movies;
+
+
+create table tb_users(
+    u_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    u_account varchar(10) not null,
+    is_active char(1),
+    u_code varchar(4),
+    u_name varchar(12) not null,
+    u_pwd varchar(20),
+    u_gender varchar(3),
+    u_age int(3),
+    token varchar(50),
+    u_vip int(1),
+    u_email varchar(30),
+    u_likemovies varchar(30),
+    u_duration varchar(4),
+    u_recording varchar(30),
+    u_recommendMovie varchar(30)
+)character set utf8 collate utf8_general_ci;
+alter table tb_users add u_account varchar(10) not null;
+alter table tb_users add is_active char(1);
+alter table tb_users alter column is_active set default '0'; //设置激活默认为0
+alter table tb_users add u_code varchar(4);

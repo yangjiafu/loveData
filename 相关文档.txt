@@ -1,0 +1,58 @@
+﻿流程：
+        先将网络资源爬取至本地，将本地资源整理存储到数据库中
+
+功能：
+        用户登录有本地记录
+        用户登录进入App，点击播放开始记录时长，没人每天免费观看3小时，提交建议赠送两小时
+        用户可提交：没有在数据库中搜索到的电影
+        用户搜索数据库实时返回相关数据
+
+数据库
+    电影内容：tb_movies
+        电影id：       m_id
+        电影名称:      m_name
+        又名：         m_othername
+        电影封面图：    m_cover
+        演员：         m_actor
+        导演：         m_director
+        类型：         m_classify
+        地区：         m_area
+        语言：         m_language
+        上映时间：      m_releasetime
+        片长：         m_duration
+        豆瓣评分：      m_score
+        用户影评：      m_shortcomment
+        剧情介绍：      m_synopsis
+        电影链接及内容： m_linkinfo
+        简介：          m_info
+        观看过的用户：   m_userid
+        播放量：        m_plays
+        喜欢人数：      m_like
+
+    用户表：
+        id：
+        name：
+        password:
+        gender：
+        age：
+        token:
+    	isvip: True or false(是否为VIP用户)
+        email：（注册发送验证码）
+        likeMovies: 收藏的电影
+        duration：观看时长
+        recording：所有观看的电影记录（电影id）
+        shortComment：观看后短评
+        score：观看后评分
+        recommendMovie：推荐电影
+    
+    信息表：
+        id：
+        userID：（推荐人的id）
+        Info_recommendMovie：用户推荐的电影
+        Info_reason: 推荐的原因（感想）
+
+    会员表：
+	id：（用户id）
+	viptimes：（会员时长）
+		
+	
