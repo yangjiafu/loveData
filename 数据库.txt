@@ -1,3 +1,4 @@
+1234
 mysql -uroot -p
 
 drop table tb_movies;//删除表
@@ -62,3 +63,19 @@ alter table tb_users add u_account varchar(10) not null;
 alter table tb_users add is_active char(1);
 alter table tb_users alter column is_active set default '0'; //设置激活默认为0
 alter table tb_users add u_code varchar(4);
+
+//用户评论表，topic_id为电影的id，form_uid为评论的用户id
+create table tb_comment(
+    c_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    topic_id int,
+    content varchar(150),
+    form_uid int
+)character set utf8 collate utf8_general_ci;
+
+//回复表，reply_id为评论表的c_id, from_uid为回复者的id
+create table tb_reply(
+    r_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    reply_id int,
+    content varchar(150),
+    from_uid int
+)character set utf8 collate utf8_general_ci;
