@@ -44,7 +44,7 @@ create table tb_movies(
 
 create table tb_users(
     u_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    u_account varchar(10) not null,
+    u_account varchar(20) not null,
     is_active char(1),
     u_code varchar(4),
     u_avatar varchar(50),
@@ -65,6 +65,7 @@ alter table tb_users add is_active char(1);
 alter table tb_users alter column is_active set default '0'; //设置激活默认为0
 alter table tb_users add u_code varchar(4);
 alter table tb_users add u_avatar varchar(50);
+alter table tb_users change u_account u_account varchar(20) not null;
 
 //用户评论表，topic_id为电影的id，form_uid为评论的用户id
 create table tb_comment(
