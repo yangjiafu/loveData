@@ -27,14 +27,15 @@ create table tb_movies(
     m_info varchar(1024),
     m_userid varchar(10),
     m_plays int(10),
-    m_like int(10)
+    m_like int(10),
+    m_dislike int(10)
 )character set utf8 collate utf8_general_ci;
 
 	truncate table tb_movies; //删除表中的所有数据没有记录（相当于新表）
 	alter table tb_movies modify m_link varchar(1024) not null;	//修改表的某一条属性
 	alter table tb_movies change m_link m_linkinfo varchar(1024) not null; //修改表的m_link字段
  	alter table tb_movies drop column m_info;   //删除字段m_info
-
+    alter table tb_movies add m_dislike int(10); //不喜欢的人数
  	update tb_users set u_name = '杨家富' where u_id = 1;
 
 	# insert into tb_movies(m_id,m_name,m_othername,m_link)values(1,'神偷奶爸','卑鄙的我','http://dl145.80s.im:920/1710/神tn爸/神tn爸_bd.mp4');

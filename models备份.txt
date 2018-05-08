@@ -103,6 +103,7 @@ class TbMovies(models.Model):
     m_userid = models.CharField(max_length=10, blank=True, null=True)
     m_plays = models.IntegerField(blank=True, null=True)
     m_like = models.IntegerField(blank=True, null=True)
+    m_dislike = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -129,12 +130,12 @@ class TbUsers(models.Model):
     u_age = models.IntegerField(blank=True, null=True)
     token = models.CharField(max_length=50, blank=True, null=True)
     u_vip = models.IntegerField(blank=True, null=True)
-    u_email = models.CharField(max_length=30, blank=True, null=True)
+    u_email = models.CharField(max_length=30, blank=True)
     u_likemovies = models.CharField(max_length=30, blank=True, null=True)
     u_duration = models.CharField(max_length=4, blank=True, null=True)
     u_recording = models.CharField(max_length=30, blank=True, null=True)
     u_recommendmovie = models.CharField(db_column='u_recommendMovie', max_length=30, blank=True, null=True)  # Field name made lowercase.
-    u_account = models.CharField(unique=True, max_length=10)
+    u_account = models.CharField(unique=True, max_length=20, null=True)
     is_active = models.CharField(max_length=1, blank=True, null=True)
     u_code = models.CharField(max_length=4, blank=True, null=True)
     u_ip = models.CharField(max_length=15, blank=True, null=True)
