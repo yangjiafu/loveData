@@ -25,10 +25,10 @@ create table tb_movies(
     m_synopsis varchar(2048),
     m_linkInfo varchar(3072) not null,
     m_info varchar(1024),
-    m_userid varchar(10),
+    m_userid varchar(10), //点赞的人的id
     m_plays int(10),
-    m_like int(10),
-    m_dislike int(10)
+    m_like int(10) default 0,
+    m_dislike int(10) default 0
 )character set utf8 collate utf8_general_ci;
 
 	truncate table tb_movies; //删除表中的所有数据没有记录（相当于新表）
