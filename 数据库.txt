@@ -88,3 +88,31 @@ create table tb_reply(
 )character set utf8 collate utf8_general_ci;
 
 alter table tb_reply change from_uid form_uid int;
+
+热门页的用户发表内容表
+create table tb_hotComment(
+    h_id int unsigned auto_increment primary key,
+    h_uid int,
+    h_comment varchar(200),
+    h_img varchar(50),
+    h_video varchar(50),
+    h_time Timestamp,
+    h_like int default 0 not null,
+    h_likes varchar(1000)
+)character set utf8 collate utf8_general_ci;
+alter table tb_hotComment add h_img varchar(50);
+alter table tb_hotComment add h_video varchar(50);
+alter table tb_hotComment change h_like h_like int default 0 not null;
+
+回复上一个表
+create table tb_hotReply(
+    hr_id int unsigned auto_increment primary key,
+    hr_uid int,
+    hr_content varchar(150),
+    hr_time Timestamp,
+    hr_likes varchar(1000),
+    hr_like int default 0 not null,
+    hr_fromid int
+)character set utf8 collate utf8_general_ci;
+alter table tb_hotReply add hr_like int;
+alter table tb_hotReply change hr_like hr_like int default 0 not null;
