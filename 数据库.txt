@@ -75,8 +75,9 @@ create table tb_comment(
     topic_id int,
     content varchar(150),
     form_uid int,
-    form_time Timestamp
+    form_time Timestamp not null default CURRENT_TIMESTAMP
 )character set utf8 collate utf8_general_ci;
+alter table tb_comment change form_time form_time Timestamp not null default CURRENT_TIMESTAMP;
     alter table tb_comment add form_time Timestamp;
 //回复表，reply_id为评论表的c_id, from_uid为回复者的id
 create table tb_reply(
@@ -84,9 +85,9 @@ create table tb_reply(
     reply_id int,
     content varchar(150),
     form_uid int,
-    form_time Timestamp
+    form_time Timestamp not null default CURRENT_TIMESTAMP
 )character set utf8 collate utf8_general_ci;
-
+alter table tb_reply change form_time form_time Timestamp not null default CURRENT_TIMESTAMP;
 alter table tb_reply change from_uid form_uid int;
 
 热门页的用户发表内容表
@@ -96,13 +97,14 @@ create table tb_hotComment(
     h_comment varchar(200),
     h_img varchar(50),
     h_video varchar(50),
-    h_time Timestamp,
+    h_time h_time Timestamp not null default CURRENT_TIMESTAMP,
     h_like int default 0 not null,
     h_likes varchar(1000)
 )character set utf8 collate utf8_general_ci;
 alter table tb_hotComment add h_img varchar(50);
 alter table tb_hotComment add h_video varchar(50);
 alter table tb_hotComment change h_like h_like int default 0 not null;
+alter table tb_hotComment change h_time h_time Timestamp not null default CURRENT_TIMESTAMP;
 
 回复上一个表
 create table tb_hotReply(
@@ -116,3 +118,4 @@ create table tb_hotReply(
 )character set utf8 collate utf8_general_ci;
 alter table tb_hotReply add hr_like int;
 alter table tb_hotReply change hr_like hr_like int default 0 not null;
+alter table tb_hotReply change hr_time hr_time Timestamp not null default CURRENT_TIMESTAMP;
